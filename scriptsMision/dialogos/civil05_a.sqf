@@ -1,0 +1,1 @@
+player globalChat "No puedo hablar, tengo que proteger a mi familia.";

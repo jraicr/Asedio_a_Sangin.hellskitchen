@@ -1,0 +1,1 @@
+player globalChat "No puedo hablar, si hablo con americanos después matan a mi familia.";

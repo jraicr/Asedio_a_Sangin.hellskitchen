@@ -1,0 +1,1 @@
+player globalChat "Aquí no hay talibanes, si hay deben estar al este en los campos de cultivo.";

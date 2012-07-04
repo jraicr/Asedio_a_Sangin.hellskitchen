@@ -1,0 +1,2 @@
+
+execVM "revive\ReviveAceWounds.sqf";

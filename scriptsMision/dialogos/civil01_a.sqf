@@ -1,0 +1,1 @@
+player globalChat "Se rumorea que en la zona norte de Sangin los talibanes tratan la droga. Pero no sé donde exactamente.";

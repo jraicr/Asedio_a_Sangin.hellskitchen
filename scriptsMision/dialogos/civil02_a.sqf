@@ -1,0 +1,1 @@
+player globalChat "Algunas noches, veo salir a medianoche un coche que se dirige al norte. No me parece muy normal. El coche se encuentra unas casas más al sur.";

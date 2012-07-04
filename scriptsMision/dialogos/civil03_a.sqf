@@ -1,0 +1,1 @@
+player globalChat "He visto coches con ametralladoras montadas pasando por los caminos de los campos al este de aquí.";
