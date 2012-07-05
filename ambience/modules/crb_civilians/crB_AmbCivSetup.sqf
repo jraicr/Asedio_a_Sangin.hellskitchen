@@ -120,9 +120,9 @@ switch toLower(worldName) do {
 	case "hellskitchen": {
 		BIS_alice_mainscope setvariable ["trafficDistance",1200];                
 		BIS_alice_mainscope setvariable ["spawnDistance",700];
-		BIS_alice_mainscope setvariable ["ALICE_townsize",400];
+		BIS_alice_mainscope setvariable ["ALICE_townsize",800];
 		BIS_alice_mainscope setVariable ["townsFaction",["BIS_TK_CIV"]];
-		BIS_alice_mainscope setVariable ["civilianCount","round (1 * (sqrt %1))"]; 
+		BIS_alice_mainscope setVariable ["civilianCount","round (1.5 * (sqrt %1))"]; 
 	};
 };
 
@@ -165,26 +165,52 @@ switch toLower(worldName) do {
 		_this addMagazine "HandGrenade_Stone";
 		//			if(!("Throw" in weapons _this)) then {_this addWeapon "Throw";};
 	};
-	//if (random 1 > 0.95 && (_this isKindOf "Woman_EP1" || _this isKindOf "Woman")) then {
-	if (random 1 > 0.95 && (_this isKindOf "TK_CIV_Takistani02_EP1" || _this isKindOf "Man")) then {
-		_this setSkill 0.1;
-		{_this enableAI _x} count ["AUTOTARGET","TARGET"];
-		if (random 1 > 0.6) then {
-			_civil_criminal = createGroup EAST;
-			[_this] join _civil_criminal;
-			_this addMagazine "ACE_30RND_762X39_S_AK47";
-			_this addMagazine "ACE_30RND_762X39_S_AK47";
-			_this addMagazine "ACE_30RND_762X39_S_AK47";
-			_this addMagazine "ACE_30RND_762X39_S_AK47";
-			_this addWeapon "AK_47_S";
-		} else {
-			_civil_criminal = createGroup EAST;
-			[_this] join _civil_criminal;
-			_this addMagazine "6Rnd_45ACP";
-			_this addMagazine "6Rnd_45ACP";
-			_this addMagazine "6Rnd_45ACP";
-			_this addMagazine "6Rnd_45ACP";
-			_this addWeapon "revolver_EP1";
+	//Civiles mas agresivos entre las 00:00 y las 05:30
+	if (daytime < 5.5) then {
+		if (random 1 > 0.70 && (_this isKindOf "TK_CIV_Takistani02_EP1" || _this isKindOf "Man")) then {
+			_this setSkill 0.1;
+			{_this enableAI _x} count ["AUTOTARGET","TARGET"];
+			if (random 1 > 0.6) then {
+				_civil_criminal = createGroup EAST;
+				[_this] join _civil_criminal;
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addWeapon "AK_47_S";
+			} else {
+				_civil_criminal = createGroup EAST;
+				[_this] join _civil_criminal;
+				_this addMagazine "6Rnd_45ACP";
+				_this addMagazine "6Rnd_45ACP";
+				_this addMagazine "6Rnd_45ACP";
+				_this addMagazine "6Rnd_45ACP";
+				_this addWeapon "revolver_EP1";
+			};
+		};
+	};
+	if (daytime >= 5.5) then {
+	hint "Civiles menos agresivo de dia";
+		if (random 1 > 0.95 && (_this isKindOf "TK_CIV_Takistani02_EP1" || _this isKindOf "Man")) then {
+			_this setSkill 0.1;
+			{_this enableAI _x} count ["AUTOTARGET","TARGET"];
+			if (random 1 > 0.6) then {
+				_civil_criminal = createGroup EAST;
+				[_this] join _civil_criminal;
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addMagazine "ACE_30RND_762X39_S_AK47";
+				_this addWeapon "AK_47_S";
+			} else {
+				_civil_criminal = createGroup EAST;
+				[_this] join _civil_criminal;
+				_this addMagazine "6Rnd_45ACP";
+				_this addMagazine "6Rnd_45ACP";
+				_this addMagazine "6Rnd_45ACP";
+				_this addMagazine "6Rnd_45ACP";
+				_this addWeapon "revolver_EP1";
+			};
 		};
 	};
 }
