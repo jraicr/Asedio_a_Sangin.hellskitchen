@@ -72,7 +72,6 @@ switch toLower(worldName) do {
 
 BIS_silvie_mainscope setVariable ["vehicleInit",{
 _IED = _this;
-
 _probabilidadIED = 75 + floor (random 25); // probabilidad de ser IED
 _dificultadDesactivacion = 15 + floor (random 30); // Facilidad de desactivacion. 0 es practicamente imposible de desactivar, 100 bastante facil
 _radioActivacion = 10 + floor (random 40); //Radio de activacion. Si X(parametro 7) soldados o un vehiculo se acercan mas de este radio, el IED explotara

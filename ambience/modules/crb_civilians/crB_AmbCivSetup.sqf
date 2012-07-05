@@ -189,8 +189,9 @@ switch toLower(worldName) do {
 			};
 		};
 	};
+	
 	if (daytime >= 5.5) then {
-	hint "Civiles menos agresivo de dia";
+		hint "Civiles menos agresivo de dia";
 		if (random 1 > 0.95 && (_this isKindOf "TK_CIV_Takistani02_EP1" || _this isKindOf "Man")) then {
 			_this setSkill 0.1;
 			{_this enableAI _x} count ["AUTOTARGET","TARGET"];
