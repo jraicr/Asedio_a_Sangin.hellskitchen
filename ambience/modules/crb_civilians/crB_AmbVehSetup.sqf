@@ -71,6 +71,15 @@ switch toLower(worldName) do {
 // randomly lock and vary fuel
 
 BIS_silvie_mainscope setVariable ["vehicleInit",{
+_IED = _this;
+
+_probabilidadIED = 75 + floor (random 25); // probabilidad de ser IED
+_dificultadDesactivacion = 15 + floor (random 30); // Facilidad de desactivacion. 0 es practicamente imposible de desactivar, 100 bastante facil
+_radioActivacion = 10 + floor (random 40); //Radio de activacion. Si X(parametro 7) soldados o un vehiculo se acercan mas de este radio, el IED explotara
+_potenciaExplosion = 1 + floor (random 6); // Potencia de la explosion , de 1 a 7
+_mostrarIED = false; // Mostrar o no mostrar el mensaje en IEDs inactivos. Si se pone True, los IEDs siempre tendran la opcion de desactivar esten activos o no, si esta a false solo los IEDs activos tendran la opcion.
+_maxSoldadosCerca = 1 + floor (random 3); // Numero maximo de soldados que se pueden acercar al IED. Por ejemplo si se pone 1, solo 1 soldado se podra acercar al IED sin detonarlo.
+_tiempoDetonacion = 5 + floor (random 7); //Tiempo aleatorio maximo antes de detonar el IED. Una vez dentro del radio de activacion y cumplidas una de las condiciones
 	if(random 1 > 0.6) then {
 		clearMagazineCargo _this;
 		clearWeaponCargo _this;
@@ -82,14 +91,13 @@ BIS_silvie_mainscope setVariable ["vehicleInit",{
 		_this setFuel 0.5 + ((random 1)^3 - (random 1)^3)/2;
 		_this setDamage (random 0.5)^2;	// Up to 25% worn out
         };
-#ifdef TUP_IED
 		// 10% (set in params) chance its a VB-IED (radio controlled if EOD) - never a bike
-		if (isNil "tup_vbied_threat")then{tup_vbied_threat = 5;};
-		If ((random 100 < tup_vbied_threat) && (tup_vbied_threat > 0) && !(_this iskindOf  "Motorcycle")) then {
+		if (isNil "nivelAmenaza_IED")then{nivelAmenaza_IED = 25;};
+		If ((random 100 < nivelAmenaza_IED) && (nivelAmenaza_IED > 0) && !(_this iskindOf "Motorcycle")) then {
 			_this lock true;
-			[_this,true] execvM "enemy\modules\tup_ied\vbied.sqf";
+			//http://www.ust101.com/phpBB3/viewtopic.php?f=18&t=311
+			[_IED,_probabilidadIED,_dificultadDesactivacion,_radioActivacion,_potenciaExplosion,_mostrarIED,_maxSoldadosCerca,_tiempoDetonacion] execVM "scripts\IED\InitIED.sqf";
 		};
-#endif
         _this addEventHandler ["Engine", {
                 if(_this select 1) then {
                         driver (_this select 0) addRating -400;
