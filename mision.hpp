@@ -23,7 +23,9 @@ class Header
 
 class CfgSounds
 {
+
  sounds[] = {};
+ #include <Scripts\IED\Bomba_Sonidos.hpp>
 };
 
 class CfgIdentities
