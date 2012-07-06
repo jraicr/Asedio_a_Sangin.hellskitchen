@@ -64,6 +64,10 @@ switch toLower(worldName) do {
         case "zargabad": {
                 BIS_silvie_mainscope setvariable ["vehicleCount","round ((sqrt %1) * 0.5)"];
         };
+		
+		case "hellskitchen": {
+                BIS_silvie_mainscope setvariable ["vehicleCount","round ((sqrt %1) * 0.5)"];
+        };
 };
 
 // custom init which is executed on every car. Vehicle can be accessed using _this variable. Init is executed as separate script, so sleep or waituntil commands can be used without limitations. 
